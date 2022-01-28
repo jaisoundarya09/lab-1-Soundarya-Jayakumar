@@ -1,0 +1,32 @@
+class Main() extends IO() {
+
+  var passed : Int = 0;
+  var failed : Int = 0;
+  var total : Int = 63;
+  
+  def assertTrue(name : String, x : Boolean) : Unit = {
+    if (x) passed = passed+1 else {
+      out("Failed test: ".concat(name)).out("\n");
+      failed = failed+1
+    }
+  };
+  
+  def assertFalse(name : String, x : Boolean) : Unit = assertTrue(name,!x);
+  
+  def assertEqual(name : String, x1 : Any, x2 : Any) : Unit = 
+    assertTrue(name.concat(", expected ").concat(x1.toString()),x1 == x2);
+  
+  // define setUp and test0, test1, test2, ...
+  
+  {
+     setUp(); test0();
+     setUp(); test1();
+     setUp(); test2();
+     out("Done with tests")
+  };
+  
+  {
+    out("Passed ").out_any(passed).out(" tests of ").out_any(total).out("\n");
+    out("Failed ").out_any(failed).out(" tests.\n")
+  };
+}

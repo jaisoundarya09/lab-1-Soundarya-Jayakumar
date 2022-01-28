@@ -1,0 +1,11 @@
+We use Docker to run executables inside docker image:
+
+```
+start-cool-shell
+```
+
+Terminology:
+- `coolc`: reference cool compiler
+- `coollex`: cool lexer
+- `coolyacc`: cool parser
+- `coolspim`: MIPS code generator
