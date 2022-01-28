@@ -2,7 +2,7 @@ class Main() extends IO() {
 
   var passed : Int = 0;
   var failed : Int = 0;
-  var total : Int = 3;
+  var total : Int = 10;
   
   def assertTrue(name : String, x : Boolean) : Unit = {
     if (x) passed = passed+1 else {
@@ -50,8 +50,6 @@ class Main() extends IO() {
       vect.add(44);
       assertEqual("testing clear and resize",vect.size(),8);
       ()
-
-
   };
 
   def test3():Unit = {
