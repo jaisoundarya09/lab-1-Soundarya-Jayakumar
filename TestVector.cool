@@ -2,7 +2,7 @@ class Main() extends IO() {
 
   var passed : Int = 0;
   var failed : Int = 0;
-  var total : Int = 63;
+  var total : Int = 3;
   
   def assertTrue(name : String, x : Boolean) : Unit = {
     if (x) passed = passed+1 else {
@@ -17,11 +17,65 @@ class Main() extends IO() {
     assertTrue(name.concat(", expected ").concat(x1.toString()),x1 == x2);
   
   // define setUp and test0, test1, test2, ...
-  
+  var vect:Vector=null;
+  def setUp():Unit = {
+    vect= new Vector();    
+    ()
+  };
+  def test0():Unit = {
+    assertEqual("size equal to 0",vect.size(),0);    
+    ()
+  };
+    def test1():Unit = {
+      vect.add(22);
+      vect.add(33);
+      vect.add(44);
+      assertEqual("size equal to 3",vect.size(),3);
+      ()
+
+  };
+    def test2():Unit = {
+    // Added 3 elements, cleared them and tested resize by adding 8 elements for a vector of initial size 6
+      vect.add(22);
+      vect.add(33);
+      vect.add(44);
+      vect.clear();
+      vect.add(100);
+      vect.add(33);
+      vect.add(44);
+      vect.add(33);
+      vect.add(44);
+      vect.add(44);
+      vect.add(33);
+      vect.add(44);
+      assertEqual("testing clear and resize",vect.size(),8);
+      ()
+
+
+  };
+
+  def test3():Unit = {
+    vect.add(1);
+    vect.add(2);
+    vect.add(3);
+    var it: Enumeration = vect.elements();
+    assertEqual("hasNext",it.hasNext(),true);
+    assertEqual("first element is 1", it.next(), 1);
+    assertEqual("hasNext",it.hasNext(),true);
+    assertEqual("second element is 2", it.next(), 2);
+    assertEqual("hasNext",it.hasNext(),true);
+    assertEqual("third element is 3", it.next(), 3);
+    assertEqual("hasNext",it.hasNext(),false);
+    ()
+  };
+
   {
      setUp(); test0();
      setUp(); test1();
      setUp(); test2();
+     setUp();test3();
+    //  setUp();test4();
+    //  setUp();test5();
      out("Done with tests")
   };
   

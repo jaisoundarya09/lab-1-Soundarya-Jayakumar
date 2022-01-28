@@ -1,1 +1,44 @@
-    
+class Enumeration() extends IO()
+{
+    def next():Any= abort("error");
+    def hasNext(): Boolean = abort("error");
+}
+
+
+class Vector() {
+    var arr:ArrayAny= new ArrayAny(6);
+    var mySize:Int= 0;
+
+    def elements(): Enumeration = new VectorEnumeration(arr,mySize);
+
+    def clear(): Unit = mySize=0;
+
+    def add(item:Any):Unit={
+        if(mySize+1< arr.length())
+        {
+
+        }
+        else
+        {
+            arr=arr.resize(arr.length()*2+1)
+        };
+
+        arr.set(mySize,item);
+        mySize = mySize + 1;
+        ()
+    };
+
+    def size(): Int= mySize;
+}
+
+class VectorEnumeration(var arr: ArrayAny,var n: Int) extends Enumeration() {
+    var i: Int = -1;
+    override def next():Any={
+        i=i+1;
+       var item: Any = arr.get(i);
+       item
+    };
+
+   override def hasNext():Boolean= i +1 < n;
+}
+
